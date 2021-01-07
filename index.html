@@ -20,30 +20,50 @@
             <h1>Weather Dashboard</h1>
         </header>
     </div>
-    <div class="container">
-        <aside class="col-md-2"
-            style="float: left; height: 100%; clear: both; padding: 10px; background-color: #ececec;">
-            <h4>Search for a City: </h4>
+    <div class="main">
+        <div class="row">
+            <aside class="col-md-3"
+                style="float: left;  height: 100%; clear: both; background-color: #ececec; ">
+                <h4>Search for a City: </h4>
 
-            <div class="search-container">
-                <input type="text" name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
+                <div class="search-container">
+                    <input type="text" name="search" id="input">
+                    <button type="submit" id="searchBtn"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div id="city-list-here">
+                  <!-- js will put divs here for cities as they're added from input/local storage -->  
+                </div>
+                
+            </aside>
+            <article class="col-md-9"
+                style=" float: right; clear: both;  background-color: white; color: black; height: 100%;">
+                <div class="jumbotron" style="background-color: white ; color: black; border-color: #ececec; border-style:solid; ">
+                    <h1 class="current-city">
+                        <!-- city name and date -->
+                    </h1>
+                    <!--input from searched city will appear here -->
+                   
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="card">
+                        <!-- card heading for forecast divs -->
+                        <div class="card-header">
+                          <strong>5-Day Forecast: </strong>
+                        </div>
+              
+                        <!-- body for 5 day cards  -->
+                        <div class="card-body" id="forecast-section">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               
+                
 
-            <!-- js will put divs here for cities as they're added from input/local storage -->
-
-        </aside>
-
-        <article class=" col-md-10"
-            style=" float: right; clear: both;  background-color: white; color: black; height: 100%;">
-            <div class="jumbotron" style="background-color: white ; color: black ;">
-                <h1 class="current-city">
-                    blah blah blah
-                </h1>
-            </div>
-
-        </article>
+            </article>
+        </div>
     </div>
 
 
@@ -58,7 +78,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="Assets/script.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -69,6 +89,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7f107e2542.js" crossorigin="anonymous"></script>
+    <script src="Assets/script.js"></script>
 </body>
 
 </html>
