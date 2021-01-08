@@ -26,6 +26,7 @@ $(document).ready(function () {
 
                 // Transfer content to HTML
                 $(".city").html("<h1>" + response.name  + "</h1>");
+                $(".icon").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
                 $(".weatherDesc").html("<h3>" + response.weather[0].main + "</h3>");
                 // with conversion to F and 2 decimal points
                 $(".temp").html("<h4> Temperature: " + (((response.main.temp - 273.15) * 1.80 + 32).toFixed(2)) + "</h4>");
@@ -69,12 +70,14 @@ $(document).ready(function () {
                       var card = $("<div>").addClass("card");
                       var cardBody = $("<div>").addClass("card-body p-3 forecastBody")
                       var cityDate = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
+                      var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + result[i].weather[0].icon + ".png")
                       var temperature = $("<p>").addClass("card-text forecastTemp").text("Temperature: " + tempF + " °F");
                       var humidity = $("<p>").addClass("card-text forecastHumidity").text("Humidity: " + result[i].main.humidity + "%");
+                    
               
                     //   
               
-                      cardBody.append(cityDate, temperature, humidity);
+                      cardBody.append(cityDate, icon, temperature, humidity);
                       card.append(cardBody);
                       $(".card-deck").append(card);
             
