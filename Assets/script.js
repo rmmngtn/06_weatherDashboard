@@ -5,6 +5,9 @@ $(document).ready(function () {
         var cityName = $("#input").val();
         // api call to get jumbotron information listed 
 
+        
+
+
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=31581a27df415fae48da576f8172e0c6";
 
         // Performing our AJAX GET request
@@ -42,59 +45,57 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         })
-            .then(function (response) {
+            .then(function (result) {
                 // Log the queryURL
                 console.log(queryURL);
 
                 // Log the resulting object
-                console.log(response);
+                console.log(result);
 
-                var timeBlock = document.querySelectorAll(".time-block");
-    console.log(timeBlock.length);
+                for (let i = 0; i < result.length; i++) {
 
-    // forEach loop over hour blocks
-    $(".time-block").each(function () {
-        // get value from html for current hour 
-        var blockHour = parseInt($(this).attr("id").split("-")[1]);
-        console.log(blockHour);
-
-
-        // change div timeblock colors depending on time of day
-        // check if currentHour > or < blockHour
-        // add css classes according to time
-        if (currentHour > blockHour) {
-            // testing that my loop is working
-            console.log("div is grey");
-            $(this).addClass("past");
-
-        }
-        else if (currentHour < blockHour) {
-            // testing that my loop is working
-            console.log("div is green");
-            $(this).addClass("future");
-        }
-
-        else {
-            // testing that my loop is working
-            console.log("div is red");
-            $(this).addClass("present");
-
-        }
-
-    });
-
+                    let day = Number(result[i].dt_txt.split('-')[2].split(' ')[0]);
+                    let hour = result[i].dt_txt.split('-')[2].split(' ')[1];
+                    console.log(day);
+                    console.log(hour);
+              
+                    if(result[i].dt_txt.indexOf("12:00:00") !== -1){
+                      
+                      // get the temperature and convert to fahrenheit 
+                      let temp = (result[i].main.temp - 273.15) * 1.80 + 32;
+                      let tempF = Math.floor(temp);
+                        console.log(tempF);
+                      var card = $("<div>").addClass("card col-md-2 ml-4 bg-primary text-white");
+                      var cardBody = $("<div>").addClass("card-body p-3 forecastBody")
+                      var cityDate = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
+                      var temperature = $("<p>").addClass("card-text forecastTemp").text("Temperature: " + tempF + " °F");
+                      var humidity = $("<p>").addClass("card-text forecastHumidity").text("Humidity: " + results[i].main.humidity + "%");
+              
+                      var image = $("<img>").attr("src", "https://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png")
+              
+                      cardBody.append(cityDate, image, temperature, humidity);
+                      card.append(cardBody);
+                      $(".forecast").append(card);
             
-            });
+        
+
+       
+           
+        
+                    };
+                }; 
+        
 
 
-
-         
-
+            }); 
 
 
-
-
-    });
+     }); 
 }); 
-
-    
+         
+        // var cityBtn = document.createElement("button");
+        
+    // creates city buttons in sidebar with click of search button 
+        // cityBtn.html(<)
+        // document.getElementById("city-list-here").appendChild(cityBtn);
+        // console.log(cityName);
