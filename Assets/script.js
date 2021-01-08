@@ -88,13 +88,7 @@ $(document).ready(function () {
 
 
 
-            // Transfer content to HTML
-        //    $(".city").html("<h1>" + response.name + "</h1>");
-        //    $(".weatherDesc").html("<h3>" + response.weather[0].main + "</h3>");
-        //     // with conversion to F and 2 decimal points
-        //    $(".temp").html("<h4> Temperature: "+ (((response.main.temp - 273.15) * 1.80 + 32).toFixed(2)) + "</h4>");
-        //    $(".humidity").html("<h4> Humidity: " + response.main.humidity + "</h4>");
-        //    $(".wind-speed").html("<h4> Wind Speed: " + response.wind.speed + "</h4>");
+         
 
 
 
