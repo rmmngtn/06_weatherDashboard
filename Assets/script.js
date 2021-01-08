@@ -55,6 +55,7 @@ $(document).ready(function () {
                 // Log the resulting object
                 console.log(result);
 
+            // algorithm to iterate through array and append cards
                 for (let i = 0; i < result.length; i++) {
                         
                     let day = Number(result[i].dt_txt.split('-')[2].split(' ')[0]);
@@ -64,45 +65,44 @@ $(document).ready(function () {
                     if(result[i].dt_txt.indexOf("12:00:00") !== -1){
                       
                       // get the temperature and convert to fahrenheit 
-                      let temp = (result[i].main.temp - 273.15) * 1.80 + 32;
-                      let tempF = Math.floor(temp);
+                      let temp = ((result[i].main.temp - 273.15) * 1.80 + 32).toFixed(2);
+                      
+                      console.log(temp);
                         
                       var card = $("<div>").addClass("card");
                       var cardBody = $("<div>").addClass("card-body p-3 forecastBody")
                       var cityDate = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
                       var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + result[i].weather[0].icon + ".png")
-                      var temperature = $("<p>").addClass("card-text forecastTemp").text("Temperature: " + tempF + " °F");
+                      var temperature = $("<p>").addClass("card-text forecastTemp").text("Temperature: " + temp);
                       var humidity = $("<p>").addClass("card-text forecastHumidity").text("Humidity: " + result[i].main.humidity + "%");
                     
               
-                    //   
+                    // adds cards to forecast deck 
               
                       cardBody.append(cityDate, icon, temperature, humidity);
                       card.append(cardBody);
                       $(".card-deck").append(card);
-            
         
-
-       
-           
         
                     };
-                }; 
-        
-
+                };
 
             }); 
+
+            // creates city buttons in sidebar with click of search button 
+            var cityBtn = $("<li>").addClass("list-group-item").text(cityName);
+            $(".city-list").prepend(cityBtn);
+            console.log(cityName);
+
+            localStorage.setItem("city", cityName); 
+            
+
 
 
      }); 
 }); 
 
 
-// var image = $("<img>").attr("src", "https://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png")
+
          
-        // var cityBtn = document.createElement("button");
-        
-    // creates city buttons in sidebar with click of search button 
-        // cityBtn.html(<)
-        // document.getElementById("city-list-here").appendChild(cityBtn);
-        // console.log(cityName);
+       
