@@ -22,23 +22,28 @@
     </div>
     <div class="main">
         <div class="row">
-            <aside class="col-md-3"
-                style="float: left;  height: 100%; clear: both; background-color: #ececec; ">
-                <h4>Search for a City: </h4>
+            <aside class="col-md-3" style="float: left;  height: 100%; clear: both; background-color: #ececec; ">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h4>Search for a City: </h4>
 
-                <div class="search-container">
-                    <input type="text" name="search" id="input">
-                    <button type="submit" id="searchBtn"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                <div id="city-list-here">
-                  <!-- js will put divs here for cities as they're added from input/local storage -->  
-                </div>
-                
+                        <div class="search-container">
+                            <input type="text" name="search" id="input">
+                            <button type="submit" id="searchBtn"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                        <div id="city-list-here">
+                            <!-- js will put divs here for cities as they're added from input/local storage -->
+                        </div>
+                    </div>
+                  </div>
+               
+
             </aside>
             <article class="col-md-9"
                 style=" float: right; clear: both;  background-color: white; color: black; height: 100%; ">
-                <div class="jumbotron" style="background-color: white ; color: black; border-color: #ececec; border-style:solid; ">
+                <div class="jumbotron"
+                    style="background-color: white ; color: black; border-color: #ececec; border-style:solid; ">
                     <div class="city">
                         <!-- city name and date -->
                     </div>
@@ -50,31 +55,38 @@
                     <div class="temp"></div>
                     <div class="humidity"></div>
                     <div class="wind-speed"></div>
-                    
-                   
+
+
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                      <div class="card">
-                        <!-- card heading for forecast divs -->
-                        <div class="card-header">
-                          <strong>5-Day Forecast: </strong>
-                        </div>
-              
-                        <!-- body for 5 day cards  -->
-                        <div class="card-body" id="forecast-section">
-                            <div class="day1"></div>
-                            <div class="day2"></div>
-                            <div class="day3"></div>
-                            <div class="day4"></div>
-                            <div class="day5"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-               
-                
+                        <div class="card">
+                            <!-- card heading for forecast divs -->
+                            <div class="card-header">
+                                <strong>5-Day Forecast: </strong>
+                            </div>
 
+                            <!-- body for 5 day cards  -->
+                            <div class="card-deck">
+                                <div class="card">
+                                    
+                                </div>
+                                <div class="card">
+                                    
+                                </div>
+                                <div class="card">
+                                  
+                                </div>
+                                <div class="card">
+                                    
+                                </div>
+                                <div class="card">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
         </div>
     </div>
@@ -91,7 +103,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
