@@ -1,66 +1,51 @@
 $(document).ready(function () {
-
-    // creates city buttons in sidebar with click of search button 
-    $("#searchBtn").on("click", function () {
-        var cityBtn = document.createElement("button");
-        var input = document.querySelector("input").value;
-
-        cityBtn.innerText = input;
-        document.getElementById("city-list-here").appendChild(cityBtn);
-        console.log(input);
-        
-        $('h1').append(input); 
-        $("#currentDay").text(moment().format("dddd, MMMM Do "));
     
-
-    });
-
-
-    // $("button").on("click", function () {
-        
-
-        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=31581a27df415fae48da576f8172e0c6";
+    $("#searchBtn").on("click", function () {
+ 
+    var cityName = $("#input").val();
+    // api call to get jumbotron information listed 
+    
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=31581a27df415fae48da576f8172e0c6";
        
-        // Performing our AJAX GET request
-        // $.ajax({
-        //     url: queryURL,
-        //     method: "GET"
-        // })
-        //     // After the data comes back from the API
-        //     .then(function (response) {
-        //         // Storing an array of results in the results variable
-        //         var results = response.data;
-        //         console.log(results);
-    //                 // Looping over every result item
-    //                 for (var i = 0; i < results.length; i++) {
+    // Performing our AJAX GET request
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        .then(function(response) {
+       // Log the queryURL
+       console.log(queryURL);
 
-        //                     // Only taking action if the photo has an appropriate rating
-        //                     if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-                        // Creating a div for the gif
-//                         var cityDiv = $("<div>");
+       // Log the resulting object
+       console.log(response);
+        
+       $("#currentDay").text(moment().format("dddd, MMMM Do "));
 
-//                         // Storing the result item's rating
-//                         var rating = results[i].rating;
+        // Transfer content to HTML
+       $(".city").html("<h1>" + response.name + "</h1>");
+       $(".weatherDesc").html("<h3>" + response.weather[0].main + "</h3>");
+       $(".temp").html("<h4> Temperature: "+ ((response.main.temp - 273.15) * 1.80 + 32)+ "</h4>");
+       $(".humidity").html("<h4> Humidity: " + response.main.humidity + "</h4>");
+       $(".wind-speed").html("<h4> Wind Speed: " + response.wind.speed + "</h4>");
+      
+       
+       
+    //    // Convert the temp to fahrenheit
+    //    var tempF = (response.main.temp - 273.15) * 1.80 + 32;
 
-//                         // Creating a paragraph tag with the result item's rating
-//                         var p = $("<p>").text("Rating: " + rating);
+    //    // add temp content to html
+    //    $(".temp").text("Temperature (K) " + response.main.temp);
+    //    $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
 
-//                         // Creating an image tag
-//                         var personImage = $("<img>");
-
-//                         // Giving the image tag an src attribute of a proprty pulled off the
-//                         // result item
-//                         personImage.attr("src", results[i].images.fixed_height.url);
-
-//                         // Appending the paragraph and personImage we created to the "gifDiv" div we created
-//                         gifDiv.append(p);
-//                         gifDiv.append(personImage);
-
-//                         // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-//                         $("#gifs-appear-here").prepend(gifDiv);
-//                     }
-//                 }
-            // })          
+    //    // Log the data in the console as well
+    //    console.log("Wind Speed: " + response.wind.speed);
+    //    console.log("Humidity: " + response.main.humidity);
+    //    console.log("Temperature (F): " + tempF);
 
 
-})
+        }); 
+    }); 
+
+    
+});
+            
